@@ -1,0 +1,164 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model DataTable
+@using System.Data
+
+<div class="pagetitle">
+    <h1>Quiz List</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Quiz">Quiz</a></li>
+            <li class="breadcrumb-item active"><a asp-controller="Quiz" asp-action="QuizList">Quiz List</a></li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Search</h5>
+
+                    <form>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label for="inputText" class="col-form-label">Quiz Name</label>
+                                <input type="text" class="form-control" placeholder="Enter quiz name" />
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="inputText" class="col-form-label">Min Question</label>
+                                <input type="text" class="form-control" placeholder="Enter min question" />
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="inputText" class="col-form-label">Max Question</label>
+                                <input type="text" class="form-control" placeholder="Enter max question" />
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-sm-4">
+                                <label for="inputDate" class="col-form-label">From Quiz Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+
+                            <div class="col-sm-4">
+                                <label for="inputDate" class="col-form-label">To Quiz Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-sm-6">
+                                <button type="button" class="btn btn-success">Search</button>
+                                <button type="button" class="btn btn-danger">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@if (!string.IsNullOrEmpty(TempData["SuccessMessage"] as string))
+{
+    <div id="success-alert" class="alert alert-success alert-dismissible fade show" role="alert">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<section class="section">
+    <span class="text-danger">@TempData["ErrorMessage"]</span>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <h5 class="card-title">Quiz List</h5>
+                        </div>
+                        <div class="col-sm-4 mt-2">
+                            <a class="btn btn-primary" asp-controller="Quiz" asp-action="AddQuiz">Add Quiz</a>
+                            <a class="btn btn-success" asp-controller="Quiz" asp-action="ExportToExcel">Download</a>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped datatable">
+                        <thead>
+                            <tr>
+                                <th>Quiz Name</th>
+                                <th>Total Questions</th>
+                                <th data-type="date" data-format="YYYY/DD/MM">Quiz Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow row in Model.Rows)
+                            {
+                                <tr>
+                                    <td>@row["QuizName"]</td>
+                                    <td>@row["TotalQuestions"]</td>
+                                    <td>@row["QuizDate"]</td>
+                                    <td>
+                                        <a class="btn btn-outline-success" asp-controller="Quiz" asp-action="AddQuiz" asp-route-QuizID="@row["QuizID"]">
+                                            <i class="bi bi-pencil-fill"></i><i>Edit</i>
+                                        </a>
+                                        <button class="btn btn-outline-danger delete-quiz" data-id="@row["QuizID"]">
+                                            <i class="bi bi-x"></i><i>Delete</i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".delete-quiz").forEach(button => {
+            button.addEventListener("click", function () {
+                let quizId = this.getAttribute("data-id");
+
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = `/Quiz/QuizDelete?QuizID=${quizId}`;
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+<script>
+    setTimeout(function () {
+        let alert = document.getElementById("success-alert");
+        if (alert) {
+            alert.style.transition = "opacity 0.5s ease";
+            alert.style.opacity = "0";
+            setTimeout(() => alert.remove(), 500);
+        }
+    }, 3000);
+</script>
