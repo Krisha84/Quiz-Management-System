@@ -1,0 +1,136 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model QuizManagement.Models.QuestionModel
+
+<div class="pagetitle">
+    <h1>Add Question</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item"><a asp-controller="Question">Question</a></li>
+            <li class="breadcrumb-item active"><a asp-controller="Question" asp-action="AddQuestion">Add Question</a></li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add Question</h5>
+
+                    <form asp-action="QuestionAddEdit" asp-controller="Question" method="post">
+                        <input type="hidden" asp-for="QuestionID" />
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label"><span class="text-danger">*</span>Question</label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <textarea asp-for="QuestionText" class="form-control" placeholder="Enter Question"></textarea>
+                                <span class="text-danger" asp-validation-for="QuestionText"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label"><span class="text-danger">*</span>Question Level</label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <select class="form-control" asp-for="QuestionLevelID" asp-items="@(new SelectList(ViewBag.QuestionLevelList, "QuestionLevelID", "QuestionLevel"))">
+                                    <option value="">Select Question Level</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="QuestionLevelID"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label"><span class="text-danger">*</span>Option A</label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <input asp-for="OptionA" class="form-control" placeholder="Enter Option A">
+                                <span class="text-danger" asp-validation-for="OptionA"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label"><span class="text-danger">*</span>Option B</label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <input asp-for="OptionB" class="form-control" placeholder="Enter Option B">
+                                <span class="text-danger" asp-validation-for="OptionB"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label"><span class="text-danger">*</span>Option C</label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <input asp-for="OptionC" class="form-control" placeholder="Enter Option C">
+                                <span class="text-danger" asp-validation-for="OptionC"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label"><span class="text-danger">*</span>Option D</label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <input asp-for="OptionD" class="form-control" placeholder="Enter Option D">
+                                <span class="text-danger" asp-validation-for="OptionD"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label"><span class="text-danger">*</span>Correct Option</label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <select asp-for="CorrectOption" class="form-select">
+                                    <option value="">Select Correct Option</option>
+                                    <option value="OptionA">Option A</option>
+                                    <option value="OptionB">Option B</option>
+                                    <option value="OptionC">Option C</option>
+                                    <option value="OptionD">Option D</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="CorrectOption"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label"><span class="text-danger">*</span>Marks</label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <input asp-for="QuestionMarks" class="form-control" type="number" placeholder="Enter the marks">
+                                <span class="text-danger" asp-validation-for="QuestionMarks"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label"><span class="text-danger">*</span>USer ID</label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <select class="form-control" asp-for="UserID" asp-items="@(new SelectList(ViewBag.UserList, "UserID", "UserName"))">
+                                    <option value="">Select User</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="UserID"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <a class="btn btn-danger" asp-controller="Question" asp-action="QuestionList">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
