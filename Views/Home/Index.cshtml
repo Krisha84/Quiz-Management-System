@@ -1,0 +1,134 @@
+﻿@model QuizManagement.Models.HomeModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="pagetitle">
+    <h1>Dashboard Statistics</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Admin</li>
+            <li class="breadcrumb-item active"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section dashboard">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-xxl-4 col-md-4">
+                    <div class="card info-card quizes-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Quizes</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-cart"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.TotalQuizes</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-4">
+                    <div class="card info-card questions-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total Questions</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-cart"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.TotalQuestions</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-4">
+                    <div class="card info-card questionLevels-card">
+                        <div class="card-body">
+                            <h5 class="card-title">Total QuestionLevels</h5>
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-cart"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.TotalQuestionLevels</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-xxl-4 col-md-4">
+                    <div class="card info-card quizes-card">
+                        <div class="card-body">
+                            <a asp-controller="QuestionLevel"
+                               asp-action="QuestionLevelWiseQuestionList"
+                               asp-route-QuestionLevelID="5">Easy Questions</a>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-cart"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.Easy</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-4">
+                    <div class="card info-card questions-card">
+                        <div class="card-body">
+                            <a asp-controller="QuestionLevel"
+                               asp-action="QuestionLevelWiseQuestionList"
+                               asp-route-QuestionLevelID="1">Medium Questions</a>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-cart"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.Medium</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-md-4">
+                    <div class="card info-card questionLevels-card">
+                        <div class="card-body">
+                            <a asp-controller="QuestionLevel"
+                               asp-action="QuestionLevelWiseQuestionList"
+                               asp-route-QuestionLevelID="3">Hard Questions</a>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-cart"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>@Model.Hard</h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
