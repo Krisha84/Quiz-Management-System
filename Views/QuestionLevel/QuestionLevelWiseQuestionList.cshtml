@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model System.Data.DataTable
+@using System.Data
+
+<div class="pagetitle">
+    <h1>Question List</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <h5 class="card-title">Question List</h5>
+                        </div>
+                    </div>
+
+                    <table class="table table-striped datatable">
+                        <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Question Level</th>
+                                <th>Option A</th>
+                                <th>Option B</th>
+                                <th>Option C</th>
+                                <th>Option D</th>
+                                <th>Answer</th>
+                                <th>Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DataRow row in Model.Rows)
+                            {
+                                <tr>
+                                    <td>@row["QuestionText"]</td>
+                                    <td>@row["QuestionLevel"]</td>
+                                    <td>@row["OptionA"]</td>
+                                    <td>@row["OptionB"]</td>
+                                    <td>@row["OptionC"]</td>
+                                    <td>@row["OptionD"]</td>
+                                    <td>@row["CorrectOption"]</td>
+                                    <td>@row["QuestionMarks"]</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
