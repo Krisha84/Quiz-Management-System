@@ -1,0 +1,76 @@
+﻿@{
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+@model UserRegistrationModel
+
+<div class="container">
+
+    <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                    <div class="d-flex justify-content-center py-4">
+                        <a href="index.html" class="logo d-flex align-items-center w-auto">
+                            <img src="https://www.shutterstock.com/image-vector/quiz-logo-time-label-question-260nw-2299277831.jpg" alt="">
+                            <span class="d-none d-lg-block">QuizManagement</span>
+                        </a>
+                    </div>
+
+                    <div class="card mb-3">
+                        <div class="card-body">
+
+                            <div class="pt-4 pb-2">
+                                <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                                <p class="text-center small">Enter your personal details to create account</p>
+                            </div>
+
+                            <form asp-controller="UserLogin" asp-action="UserAddEdit" method="post">
+                                <input type="hidden" value="0" asp-for="UserID" />
+                                <div class="col-12">
+                                    <label for="yourName" class="form-label">UserName</label>
+                                    <input asp-for="UserName" class="form-control" id="yourName">
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="yourPassword" class="form-label">Password</label>
+                                    <input asp-for="Password" type="password" class="form-control" id="yourPassword">
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="yourEmail" class="form-label">Your Email</label>
+                                    <input asp-for="Email" class="form-control" id="yourEmail">
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-12">
+                                    <label for="yourMobile" class="form-label">Mobile Number</label>
+                                    <input asp-for="Mobile" class="form-control" id="yourMobile">
+                                    <span asp-validation-for="Mobile" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-12 mt-3">
+                                    <button class="btn btn-primary w-100" type="submit">Register</button>
+                                </div>
+                                <div class="col-12 mt-3">
+                                    <p class="small mb-0">Already have an account? <a href="@Url.Action("LoginPage", "UserLogin")">Log in</a></p>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+}
