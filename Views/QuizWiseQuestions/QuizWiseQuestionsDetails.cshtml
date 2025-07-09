@@ -1,0 +1,134 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<div class="pagetitle">
+    <h1>Quiz Wise Question Details</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item"><a asp-controller="QuizWiseQuestions">Quiz wise Questions</a></li>
+            <li class="breadcrumb-item active"><a asp-controller="QuizWiseQuestions" asp-action="QuizWiseQuestionsList">Quiz Wise Questions List</a></li>
+            <li class="breadcrumb-item active"><a asp-controller="QuizWiseQuestions" asp-action="QuizWiseQuestionsDetails">Quiz Wise Question Details</a></li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <h5 class="card-title">Quiz Wise Question Details</h5>
+                        </div>
+                        <div class="col-sm-5 mt-2">
+                            <a class="btn btn-danger" asp-controller="QuizWisequestions">Delete Selected</a>
+                            <a class="btn btn-primary" asp-controller="Question" asp-action="AddQuestion">Add Questions</a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-sm-3">
+                            Quiz Name : Quiz1
+                        </div>
+                        <div class="col-sm-3">
+                            Total Questions in Quiz : 10
+                        </div>
+                    </div>
+
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" /></th>
+                                <th>Question</th>
+                                <th>Option A</th>
+                                <th>Option B</th>
+                                <th>Option C</th>
+                                <th>Option D</th>
+                                <th>Correct Option</th>
+                                <th>Marks</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>Question1</td>
+                                <td>Option A</td>
+                                <td>Option B</td>
+                                <td>Option C</td>
+                                <td>Option D</td>
+                                <td>B</td>
+                                <td>2</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger"><i class="bi bi-x"></i><i>Delete</i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>Question2</td>
+                                <td>Option A</td>
+                                <td>Option B</td>
+                                <td>Option C</td>
+                                <td>Option D</td>
+                                <td>A</td>
+                                <td>5</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger"><i class="bi bi-x"></i><i>Delete</i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>Question3</td>
+                                <td>Option A</td>
+                                <td>Option B</td>
+                                <td>Option C</td>
+                                <td>Option D</td>
+                                <td>C</td>
+                                <td>3</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger"><i class="bi bi-x"></i><i>Delete</i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>Question4</td>
+                                <td>Option A</td>
+                                <td>Option B</td>
+                                <td>Option C</td>
+                                <td>Option D</td>
+                                <td>D</td>
+                                <td>1</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger"><i class="bi bi-x"></i><i>Delete</i></button>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td><input type="checkbox" /></td>
+                                <td>Question5</td>
+                                <td>Option A</td>
+                                <td>Option B</td>
+                                <td>Option C</td>
+                                <td>Option D</td>
+                                <td>A</td>
+                                <td>4</td>
+                                <td>
+                                    <button type="button" class="btn btn-outline-danger"><i class="bi bi-x"></i><i>Delete</i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,86 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model QuizManagement.Models.QuizWiseQuestionsModel
+
+<div class="pagetitle">
+    <h1>Add Quiz Wise Questions</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item"><a asp-controller="QuizWiseQuestions">Quiz Wise Questions</a></li>
+            <li class="breadcrumb-item active"><a asp-controller="QuizWiseQuestions" asp-action="AddQuizWiseQuestions">Add Quiz Wise Questions</a></li>
+        </ol>
+    </nav>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Add Quiz Wise Questions</h5>
+
+                    <form method="post" asp-action="QuizWiseQuestionsAddEdit" asp-controller="QuizWiseQuestions">
+                        <input type="hidden" asp-for="QuizWiseQuestionsID" />
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">
+                                <span class="text-danger">*</span> Quiz ID
+                            </label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <select class="form-control" asp-for="QuizID" asp-items="@(new SelectList(ViewBag.QuizList, "QuizID", "QuizName"))">
+                                    <option value="">Select Quiz</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="QuizID"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">
+                                <span class="text-danger">*</span> Question ID
+                            </label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <select class="form-control" asp-for="QuestionID" asp-items="@(new SelectList(ViewBag.QuestionList, "QuestionID", "QuestionText"))">
+                                    <option value="">Select Question</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="QuestionID"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-sm-3 col-form-label">
+                                <span class="text-danger">*</span> User ID
+                            </label>
+                            <div class="col-sm-1">:</div>
+                            <div class="col-sm-8">
+                                <select class="form-control" asp-for="UserID" asp-items="@(new SelectList(ViewBag.UserList, "UserID", "UserName"))">
+                                    <option value="">Select User</option>
+                                </select>
+                                <span class="text-danger" asp-validation-for="UserID"></span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-sm-6">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <a class="btn btn-danger" asp-controller="QuizWiseQuestions" asp-action="QuizWiseQuestionsList">Cancel</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
