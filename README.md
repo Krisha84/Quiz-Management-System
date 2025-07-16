@@ -26,7 +26,6 @@ This project was developed to explore **ASP.NET Core MVC** capabilities and to p
 | 📝 **Quiz Creation**       | Create quizzes with multiple questions |
 | ❓ **Question Management** | Add, Edit, Delete quiz questions |
 | 📋 **Category-wise Quizzes** | Organize quizzes by subject/topic |
-| 📊 **Result Generation** | Auto-generate quiz results with scoring |
 | 📈 **Statistics Dashboard** | View performance stats and quiz attempts |
 | 🗄️ **Database Integrated** | Data persistence using SQL Server |
 
